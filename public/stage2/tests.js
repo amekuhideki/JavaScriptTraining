@@ -11,7 +11,8 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
       //
       // var element = document.getElementById('firebrick');
       // element.textContent = element.textContent + element.textContent;
-      var element = 'change me!';
+      var element = document.getElementById('firebrick');
+      element.textContent = element.textContent + element.textContent;
 
 
       expect(element).to.have.property(secret('vq'), secret('sveroevpx'));
@@ -24,8 +25,24 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
 
       // ここにコードを記述してください。
       // 変更した DOM 要素は element 変数に代入してください。
-      var element = 'change me!';
+      var element = document.getElementById('chocolate');
+      
+      /**
+      * 文字列を指定回数繰り返した文字列を返す。
+      * @param {string} str 繰り返したい文字列。
+      * @param {number} num 繰り返す回数。
+      * @return {string} 生成された文字列。
+      */
+      function repeat(str, num) {
+        // JavaScript には文字列繰り返し演算子がないので、このように
+        // 文字列繰り返しをおこなう関数を定義することがよく見かけられます。
+        return Array(num + 1).join(str);
 
+        // ちなみに、上の書き方でなぜ文字列繰り返しになるのか、不思議だと
+        // 思いませんか？余裕があれば、どうしてこの書き方でうまくいくのか
+        // 考えてみてください！
+      }
+      element.textContent = repeat(element.textContent, 2);
 
       expect(element).to.have.property(secret('vq'), secret('pubpbyngr'));
       expect(element).to.have.deep.property(
@@ -40,7 +57,15 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
 
       // ここにコードを記述してください。
       // 変更した DOM 要素は element 変数に代入してください。
-      var element = 'change me!';
+      var element = document.getElementsByClassName('mediumseagreen')[0];
+      
+      // HTMLElement#style#backgroundColor によって、背景色を確定することが
+      // できます。指定できる形式はいろいろありますが、今回はカラーキーワードを
+      // 使う問題になっています。
+      //
+      // 色の形式いろいろ:
+      // https://developer.mozilla.org/ja/docs/Web/CSS/color_value
+      element.style.backgroundColor = 'limegreen';
 
 
       expect(element).to.have.property(
@@ -58,8 +83,11 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
 
       // ここにコードを記述してください。
       // 変更した DOM 要素は element 変数に代入してください。
-      var element = 'change me!';
+      var element = document.getElementsByClassName('turquoise')[0];
 
+      // HTMLElement#style#opacity によって、要素の不透明を指定することが
+      // できます。
+      element.style.opacity = 0.5;
 
       expect(element).to.have.property(
         secret('pynffAnzr'), secret('ghedhbvfr'));
@@ -76,8 +104,11 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
 
       // ここにコードを記述してください。
       // 変更した DOM 要素は element 変数に代入してください。
-      var element = 'change me!';
+      var element = document.getElementsByTagName('blockquote')[0];
 
+      // transform に指定できる要素はいろいろありますが、今回は rotate を使うの
+      // がよさそうです。
+      element.style.transform = 'rotate(10deg)';
 
       expect(element).to.have.property(
         secret('gntAnzr'), secret('OYBPXDHBGR'));
@@ -95,10 +126,13 @@ describe('ステージ2（意図した通りに DOM 要素の属性・テキス�
       // ここにコードを記述してください。
       // 変更した DOM 要素は element 変数に代入してください。
       //
-      // なお、上に 20px 移動させる方法は複数ありますが、今回は top 属性を
+      // なお、上に 20px 移動させる方法は複数ありますが、今回は top プロパティを
       // 使う方法を使ってください。
-      var element = 'change me!';
+      var element = document.querySelector('[data-js-training="blueviolet"]');
+      
+      element.style.top = '-20px';
 
+      element.style.position = 'relative';
 
       expect(element).to.have.deep.property(
         secret('qngnfrg.wfGenvavat'), secret('oyhrivbyrg'));
